@@ -62,7 +62,7 @@ while sqrt(normUVk) > eps*sqrt(normAk)
         for l = 1 : depth
             dnorm = dnorm + (U(:,l)'*uk)*(vk*V(l,:)');
         end
-        dnorm = 2*abs(dnorm);
+        dnorm = 2*real(dnorm);
         normUVk = norm(uk)^2*norm(vk)^2;
         normAk = normAk + dnorm + normUVk;
         
