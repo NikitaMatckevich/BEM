@@ -16,7 +16,7 @@ fun = @(x) -exp(-1i*k*x(1,1));
 for i=1:N-1
     B(i,1) = quadra1(fun, a(i,:), a(i+1,:), witemp, xitemp);
 end
-B(N,1) = quadraJessie(fun, a(N,:), a(1,:), witemp, xitemp);
+B(N,1) = quadra1(fun, a(N,:), a(1,:), witemp, xitemp);
 
 tree = nodePartition(1:N, 0, 1, a, sqrt(N));
 
