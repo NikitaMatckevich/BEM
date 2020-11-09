@@ -11,10 +11,10 @@ dphi = 2*pi/N;
 theta = dphi*(1:N)';
 Nb_modes = 60;
 
-%% points de gauss
+%% nb of Gauss points
 Ng = 2;
 
-%% quadrature de Gauss
+%% get Gauss quadrature coefficients
 [w, x] = gaussQuad(Ng);
 
 %% computation of BB
@@ -25,12 +25,25 @@ for i=1:N
 end
 
 %% p numeric
-tree = nodePartition(1:N, 0, 1, a', sqrt(N));
+
+% create binary tree of indices
+tree = nodePartition(1:N, 0, 1, a', 10);
+
+% create empty HMatrix using binary tree
 eta = 3;
-HM = visitorAdmissibility(eta, [], tree, tree, a');
-HM = visitorInitBlocks(HM, tree);
+HM = visitorInitHMatrix(eta, [], tree, tree, a');
+
+% create matrix blocks for HM 
+% HM = visitorInitBlocks(HM, tree);
+
+% dump info
 %visitorHMatrixParser(HM);
-visitorPlotRanks(HM, tree);
+
+% calculate the compression of the storage
+compressionRate = visitorPlotRanks(HM, tree);
+fprintf("compression rate = %.3e\n", compressionRate);
+
+% inverse H-matrix using gmres
 max_iter = 30;
 tol = 1e-6;
 p_num = HMgmres(HM, tree, BB, zeros(N,1), max_iter, tol);
