@@ -1,6 +1,7 @@
 function [y] = quadra2(f,a,b,c,w,x)
 n = length(w);
 y = 0;
+
 cx = 0.5*(b+a);
 dx = 0.5*(b-a);
 for i=1:n

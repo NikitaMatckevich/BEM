@@ -1,10 +1,10 @@
 function res = findFirstNotIn(array)
-prev = 0;
-for a = array
-    next = a;
-    if next - prev > 1
-        break;
-    end
-    prev = next;
+
+array = [0 array];
+i = find(diff(array)>1);
+
+if isempty(i)
+    res = array(end) + 1;
+else
+    res = array(i(1)) + 1;
 end
-res = prev + 1;

@@ -1,8 +1,8 @@
 function [coords, N, R, k] = coordGen(ids)
 
-dens = 40;
+dens = 10;
 R = 1;    % rayon de disque
-k = pi/2; % nombre d'onde
+k = pi; % nombre d'onde
 
 N = ceil(dens*2*k*R);
 dphi = 2*pi/N;
