@@ -2,7 +2,7 @@ function [U,V] = partialACA(xIds, yIds)
 
 m = length(xIds);
 
-tStartWALL = tic;
+%tStartWALL = tic;
 
 normAk = 0;
 normUVk = 1;
@@ -33,10 +33,10 @@ while sqrt(normUVk) > eps*sqrt(normAk)
     [sigma, j] = max(absVk);
     if sigma < 1e-12
         if iter >= m
-            etime = toc(tStartWALL);
-            fprintf("partial ACA converged succesfully\n");
-            fprintf("\t final iteration = %d\n", iter);
-            fprintf("\t elapsed time = %5.3e\n", etime);
+            %etime = toc(tStartWALL);
+            %fprintf("partial ACA converged succesfully\n");
+            %fprintf("\t final iteration = %d\n", iter);
+            %fprintf("\t elapsed time = %5.3e\n", etime);
             return;
         else
             i = findFirstNotIn(iIds);
@@ -73,7 +73,7 @@ while sqrt(normUVk) > eps*sqrt(normAk)
     iter = iter + 1;
 end
 
-etime = toc(tStartWALL);
-fprintf("partial ACA converged succesfully\n");
-fprintf("\t final iteration = %d\n", iter);
-fprintf("\t elapsed time = %5.3e\n", etime);
+%etime = toc(tStartWALL);
+%fprintf("partial ACA converged succesfully\n");
+%fprintf("\t final iteration = %d\n", iter);
+%fprintf("\t elapsed time = %5.3e\n", etime);
