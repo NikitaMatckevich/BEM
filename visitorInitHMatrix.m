@@ -33,9 +33,9 @@ else
         block.yId = [Y.lvlId Y.colId];
         HM = [HM block];
     else
-        HM = visitorAdmissibility(eta, HM, X.left , Y.left , coords);
-        HM = visitorAdmissibility(eta, HM, X.left , Y.right, coords);
-        HM = visitorAdmissibility(eta, HM, X.right, Y.left , coords);
-        HM = visitorAdmissibility(eta, HM, X.right, Y.right, coords);
+        HM = visitorInitHMatrix(eta, HM, X.left , Y.left , coords);
+        HM = visitorInitHMatrix(eta, HM, X.left , Y.right, coords);
+        HM = visitorInitHMatrix(eta, HM, X.right, Y.left , coords);
+        HM = visitorInitHMatrix(eta, HM, X.right, Y.right, coords);
     end
 end
